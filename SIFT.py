@@ -7,9 +7,11 @@ sift.setNFeatures(500)
 sift.setContrastThreshold(0.03)
 sift.setEdgeThreshold(10)
 
-keypoints = sift.detect(image, None)
+keypoints, descriptors = sift.detectAndCompute(image, None)
 
 cv2.drawKeypoints(image, keypoints, image, flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+
+print(len(descriptors))
 
 cv2.imshow("img", image)
 cv2.waitKey(0)
